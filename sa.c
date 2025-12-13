@@ -1,40 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   sa.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: relhadi <relhadi@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/10 19:28:12 by relhadi           #+#    #+#             */
-/*   Updated: 2025/12/10 19:58:13 by relhadi          ###   ########.fr       */
+/*   Created: 2025/12/14 00:03:13 by relhadi           #+#    #+#             */
+/*   Updated: 2025/12/14 00:04:34 by relhadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atol(char *str)
+void	sa(t_stack_node **a)
 {
-	int		i;
-	int		sign;
-	long	result;
-
-	sign = 1;
-	result = 0;
-	i = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-	{
-		i++;
-	}
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10 + (str[i] - '0');
-		i++;
-	}
-	return (result * sign);
+	swap(a);
+	write(1, "sa\n", 3);
 }

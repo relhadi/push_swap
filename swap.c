@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: relhadi <relhadi@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/10 19:28:12 by relhadi           #+#    #+#             */
-/*   Updated: 2025/12/10 19:58:13 by relhadi          ###   ########.fr       */
+/*   Created: 2025/12/12 18:03:50 by relhadi           #+#    #+#             */
+/*   Updated: 2025/12/14 00:02:25 by relhadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atol(char *str)
+void	swap(t_stack_node **head)
 {
-	int		i;
-	int		sign;
-	long	result;
+	t_stack_node	*first;
+	t_stack_node	*second;
 
-	sign = 1;
-	result = 0;
-	i = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-	{
-		i++;
-	}
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10 + (str[i] - '0');
-		i++;
-	}
-	return (result * sign);
+	first = *head;
+	first->next = second;
+	if (!head || !*head || !(*head)->next)
+		return ;
+	first->next = second->next;
+	if (first->next != NULL)
+		first->next->previous = first;
+	second->next = first;
+	first->previous = second;
+	second->previous = NULL;
+	*head = second;
 }

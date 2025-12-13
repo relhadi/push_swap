@@ -6,7 +6,7 @@
 /*   By: relhadi <relhadi@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 18:15:20 by relhadi           #+#    #+#             */
-/*   Updated: 2025/12/12 16:03:07 by relhadi          ###   ########.fr       */
+/*   Updated: 2025/12/13 16:07:12 by relhadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ void	init_stack_a(t_stack_node **a, char **argv);
 void	free_stack(t_stack_node **stack);
 int		error_management(char *str_n);
 int		duplicate_error(t_stack_node **a, int n);
+void	swap(t_stack_node **head);
 
 #endif
