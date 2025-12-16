@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   rrb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: relhadi <relhadi@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/12 18:03:50 by relhadi           #+#    #+#             */
-/*   Updated: 2025/12/16 03:26:55 by relhadi          ###   ########.fr       */
+/*   Created: 2025/12/15 01:41:37 by relhadi           #+#    #+#             */
+/*   Updated: 2025/12/15 01:41:56 by relhadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_stack_node **head)
+void	rra(t_stack_node **b)
 {
-	t_stack_node	*first;
-	t_stack_node	*second;
-
-	if (!head || !*head || !(*head)->next)
-		return ;
-	first = *head;
-	second = (*head)->next;
-	first->next = second->next;
-	if (first->next != NULL)
-		first->next->previous = first;
-	second->next = first;
-	first->previous = second;
-	second->previous = NULL;
-	*head = second;
+	rev_rotate(b);
+	write (1, "rrb\n", 4);
 }

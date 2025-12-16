@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   find_biggest.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: relhadi <relhadi@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/12 18:03:50 by relhadi           #+#    #+#             */
-/*   Updated: 2025/12/16 03:26:55 by relhadi          ###   ########.fr       */
+/*   Created: 2025/12/16 00:39:52 by relhadi           #+#    #+#             */
+/*   Updated: 2025/12/16 01:34:59 by relhadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_stack_node **head)
+t_stack_node	*find_biggest(t_stack_node **a)
 {
-	t_stack_node	*first;
-	t_stack_node	*second;
+	long			biggest;
+	t_stack_node	*node_biggest;
+	t_stack_node	*node_i;
 
-	if (!head || !*head || !(*head)->next)
-		return ;
-	first = *head;
-	second = (*head)->next;
-	first->next = second->next;
-	if (first->next != NULL)
-		first->next->previous = first;
-	second->next = first;
-	first->previous = second;
-	second->previous = NULL;
-	*head = second;
+	if (!a || !*a)
+		return NULL;
+	node_i = *a;
+	node_biggest = *a;
+	biggest = (*a)->nb;
+	while (node_i != NULL)
+	{
+		if (node_i->nb > biggest)
+		{
+			biggest = node_i->nb;
+			node_biggest = node_i;
+		}
+		node_i = node_i->next;
+	}
+	return (node_biggest);
 }

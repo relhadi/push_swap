@@ -33,5 +33,21 @@ void	free_stack(t_stack_node **stack);
 int		error_management(char *str_n);
 int		duplicate_error(t_stack_node **a, int n);
 void	swap(t_stack_node **head);
+void	rotate(t_stack_node **a);
+void	rev_rotate(t_stack_node **head);
+void	push(t_stack_node **a, t_stack_node **b);
+t_stack_node	*find_biggest(t_stack_node **a);
+void	pa(t_stack_node **a, t_stack_node **b);
+void	pb(t_stack_node **a, t_stack_node **b);
+void	ra(t_stack_node **a);
+void	rb(t_stack_node **b);
+void	rr(t_stack_node **a, t_stack_node **b);
+void	rra(t_stack_node **a);
+void	rra(t_stack_node **b);
+void	rrr(t_stack_node **a, t_stack_node **b);
+void	sa(t_stack_node **a);
+void	sb(t_stack_node **b);
+void	sort_three(t_stack_node **a);
+void	ss(t_stack_node **a, t_stack_node **b);
 
 #endif

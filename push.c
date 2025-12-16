@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: relhadi <relhadi@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/12 18:03:50 by relhadi           #+#    #+#             */
-/*   Updated: 2025/12/16 03:26:55 by relhadi          ###   ########.fr       */
+/*   Created: 2025/12/15 01:51:35 by relhadi           #+#    #+#             */
+/*   Updated: 2025/12/15 22:24:17 by relhadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_stack_node **head)
+void	push(t_stack_node **src, t_stack_node **dest)
 {
-	t_stack_node	*first;
-	t_stack_node	*second;
+	t_stack_node	*node_pushed;
 
-	if (!head || !*head || !(*head)->next)
+	if (!src || !*src)
 		return ;
-	first = *head;
-	second = (*head)->next;
-	first->next = second->next;
-	if (first->next != NULL)
-		first->next->previous = first;
-	second->next = first;
-	first->previous = second;
-	second->previous = NULL;
-	*head = second;
+	node_pushed = *src;
+	*src = (*src)->next;
+	if (*src)
+		(*src)->previous = NULL;
+	node_pushed->previous = NULL;
+	if (!*dest)
+	{
+		*dest = node_pushed;
+		node_pushed->next = NULL;
+	}
+	else
+	{
+		node_pushed->next = *dest;
+		(*dest)->previous = node_pushed;
+		*dest = node_pushed;
+	}
 }
