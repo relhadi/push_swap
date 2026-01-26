@@ -1,42 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   find_cheapest.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: relhadi <relhadi@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/10 19:28:12 by relhadi           #+#    #+#             */
-/*   Updated: 2026/01/26 04:47:17 by relhadi          ###   ########.fr       */
+/*   Created: 2026/01/22 17:30:30 by relhadi           #+#    #+#             */
+/*   Updated: 2026/01/26 02:11:04 by relhadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atol(const char *str)
+void	find_cheapest(t_stack_node *stack)
 {
-	int		i;
-	int		sign;
-	long	result;
+	t_stack_node	*cheapest_node;
+	long			cheapest_cost;
 
-	sign = 1;
-	result = 0;
-	i = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+	cheapest_node = NULL;
+	if (!stack)
+		return ;
+	cheapest_cost = LONG_MAX;
+	while (stack)
 	{
-		i++;
+		stack->cheapest = false;
+		if (stack->cost < cheapest_cost)
+		{
+			cheapest_cost = stack->cost;
+			cheapest_node = stack;
+		}
+		stack = stack->next;
 	}
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		if (result > 2147483648)
-			return (2147483648);
-		result = result * 10 + (str[i] - '0');
-		i++;
-	}
-	return (result * sign);
+	cheapest_node->cheapest = true;
 }

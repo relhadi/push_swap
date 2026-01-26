@@ -6,7 +6,7 @@
 /*   By: relhadi <relhadi@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 01:51:35 by relhadi           #+#    #+#             */
-/*   Updated: 2025/12/15 22:24:17 by relhadi          ###   ########.fr       */
+/*   Updated: 2026/01/26 03:08:57 by relhadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	push(t_stack_node **src, t_stack_node **dest)
 	node_pushed = *src;
 	*src = (*src)->next;
 	if (*src)
-		(*src)->previous = NULL;
-	node_pushed->previous = NULL;
+		(*src)->prev = NULL;
+	node_pushed->prev = NULL;
 	if (!*dest)
 	{
 		*dest = node_pushed;
@@ -31,7 +31,7 @@ void	push(t_stack_node **src, t_stack_node **dest)
 	else
 	{
 		node_pushed->next = *dest;
-		(*dest)->previous = node_pushed;
+		(*dest)->prev = node_pushed;
 		*dest = node_pushed;
 	}
 }

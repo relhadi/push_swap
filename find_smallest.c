@@ -1,42 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   find_smallest.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: relhadi <relhadi@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/10 19:28:12 by relhadi           #+#    #+#             */
-/*   Updated: 2026/01/26 04:47:17 by relhadi          ###   ########.fr       */
+/*   Created: 2026/01/24 04:34:11 by relhadi           #+#    #+#             */
+/*   Updated: 2026/01/26 02:24:17 by relhadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atol(const char *str)
+t_stack_node	*find_smallest(t_stack_node *a)
 {
-	int		i;
-	int		sign;
-	long	result;
+	long			smallest;
+	t_stack_node	*node_smallest;
+	t_stack_node	*node_i;
 
-	sign = 1;
-	result = 0;
-	i = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+	if (!a)
+		return (NULL);
+	node_i = a;
+	node_smallest = a;
+	smallest = a->nb;
+	while (node_i != NULL)
 	{
-		i++;
+		if (node_i->nb < smallest)
+		{
+			smallest = node_i->nb;
+			node_smallest = node_i;
+		}
+		node_i = node_i->next;
 	}
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		if (result > 2147483648)
-			return (2147483648);
-		result = result * 10 + (str[i] - '0');
-		i++;
-	}
-	return (result * sign);
+	return (node_smallest);
 }

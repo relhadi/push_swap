@@ -6,7 +6,7 @@
 /*   By: relhadi <relhadi@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 22:13:44 by relhadi           #+#    #+#             */
-/*   Updated: 2025/12/15 22:15:22 by relhadi          ###   ########.fr       */
+/*   Updated: 2026/01/26 03:11:01 by relhadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	pb(t_stack_node **a, t_stack_node **b)
 {
-	push(a, b);
+	push(b, a);
 	write (1, "pb\n", 3);
 }

@@ -1,42 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   init_node_b.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: relhadi <relhadi@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/10 19:28:12 by relhadi           #+#    #+#             */
-/*   Updated: 2026/01/26 04:47:17 by relhadi          ###   ########.fr       */
+/*   Created: 2026/01/26 01:06:30 by relhadi           #+#    #+#             */
+/*   Updated: 2026/01/26 03:33:36 by relhadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atol(const char *str)
+void	init_node_b(t_stack_node *b, t_stack_node *a)
 {
-	int		i;
-	int		sign;
-	long	result;
-
-	sign = 1;
-	result = 0;
-	i = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-	{
-		i++;
-	}
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		if (result > 2147483648)
-			return (2147483648);
-		result = result * 10 + (str[i] - '0');
-		i++;
-	}
-	return (result * sign);
+	set_current_pos(b);
+	set_current_pos(a);
+	set_target_b(a, b);
 }

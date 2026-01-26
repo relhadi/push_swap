@@ -6,24 +6,24 @@
 /*   By: relhadi <relhadi@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 01:24:18 by relhadi           #+#    #+#             */
-/*   Updated: 2025/12/15 01:38:47 by relhadi          ###   ########.fr       */
+/*   Updated: 2026/01/26 03:23:11 by relhadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rev_rotate(t_stack_node **head)
+void	rev_rotate(t_stack_node **stack)
 {
 	t_stack_node	*last;
 
-	if (!head || !*head || !(*head)->next)
+	if (!stack || !*stack || !(*stack)->next)
 		return ;
-	last = *head;
-	while (last->next != NULL)
+	last = *stack;
+	while (last->next)
 		last = last->next;
-	last->previous->next = NULL;
-	last->next = *head;
-	(*head)->previous = last;
-	last->previous = NULL;
-	(*head) = last;
+	last->prev->next = NULL;
+	last->next = *stack;
+	(*stack)->prev = last;
+	*stack = last;
+	(*stack)->prev = NULL;
 }

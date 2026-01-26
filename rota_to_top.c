@@ -1,42 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   prep_for_push.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: relhadi <relhadi@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/10 19:28:12 by relhadi           #+#    #+#             */
-/*   Updated: 2026/01/26 04:47:17 by relhadi          ###   ########.fr       */
+/*   Created: 2026/01/22 17:55:37 by relhadi           #+#    #+#             */
+/*   Updated: 2026/01/26 04:00:13 by relhadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atol(const char *str)
+void	rota_to_top(t_stack_node **stack, t_stack_node *node, char c)
 {
-	int		i;
-	int		sign;
-	long	result;
-
-	sign = 1;
-	result = 0;
-	i = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+	if (!stack || !(*stack) || !node)
+		return ;
+	while (*stack != node)
 	{
-		i++;
+		if (c == 'a')
+		{
+			if (node->above_median)
+				ra(stack);
+			else
+				rra(stack);
+		}
+		else if (c == 'b')
+		{
+			if (node->above_median)
+				rb(stack);
+			else
+				rrb(stack);
+		}
 	}
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		if (result > 2147483648)
-			return (2147483648);
-		result = result * 10 + (str[i] - '0');
-		i++;
-	}
-	return (result * sign);
 }

@@ -1,42 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   move_b_to_a.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: relhadi <relhadi@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/10 19:28:12 by relhadi           #+#    #+#             */
-/*   Updated: 2026/01/26 04:47:17 by relhadi          ###   ########.fr       */
+/*   Created: 2026/01/26 01:12:08 by relhadi           #+#    #+#             */
+/*   Updated: 2026/01/26 04:09:57 by relhadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atol(const char *str)
+void	move_b_to_a(t_stack_node **a, t_stack_node **b)
 {
-	int		i;
-	int		sign;
-	long	result;
-
-	sign = 1;
-	result = 0;
-	i = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-	{
-		i++;
-	}
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		if (result > 2147483648)
-			return (2147483648);
-		result = result * 10 + (str[i] - '0');
-		i++;
-	}
-	return (result * sign);
+	rota_to_top(a, (*b)->target_node, 'a');
+	pa(a, b);
 }

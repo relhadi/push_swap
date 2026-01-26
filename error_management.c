@@ -6,25 +6,27 @@
 /*   By: relhadi <relhadi@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 11:57:27 by relhadi           #+#    #+#             */
-/*   Updated: 2025/12/12 15:56:07 by relhadi          ###   ########.fr       */
+/*   Updated: 2026/01/26 04:16:15 by relhadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	error_management(char *str_n)
+int	error_management(char *str)
 {
-	if (!((*str_n == '-' || *str_n == '+')
-			|| (*str_n >= '0' && *str_n <= '9')))
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (!((*str == '-' || *str == '+')
+			|| (*str >= '0' && *str <= '9')))
 		return (1);
-	if ((*str_n == '-' || *str_n == '+')
-		&& (!(*(str_n + 1) >= '0' && *(str_n + 1) <= '9')))
+	if ((*str == '-' || *str == '+')
+		&& (!(*(str + 1) >= '0' && *(str + 1) <= '9')))
 		return (1);
-	if (*str_n == '-' || *str_n == '+')
-		str_n++;
-	while (*str_n)
+	if (*str == '-' || *str == '+')
+		str++;
+	while (*str)
 	{
-		if (!(*str_n >= '0' && *str_n <= '9'))
+		if (!(*str >= '0' && *str <= '9'))
 			return (1);
-		str_n++;
+		str++;
 	}
 	return (0);
 }

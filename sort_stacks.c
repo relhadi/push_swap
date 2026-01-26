@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sort_stacks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: relhadi <relhadi@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/12 16:06:55 by relhadi           #+#    #+#             */
-/*   Updated: 2026/01/26 22:21:13 by relhadi          ###   ########.fr       */
+/*   Created: 2026/01/24 01:06:44 by relhadi           #+#    #+#             */
+/*   Updated: 2026/01/26 01:35:18 by relhadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	len_stack(t_stack_node *stack)
+int	len_stack(t_stack_node *stack)
 {
-	int	count;
+	int		i;
 
-	count = 0;
+	i = 0;
 	while (stack)
 	{
+		i++;
 		stack = stack->next;
-		count++;
 	}
-	return (count);
+	return (i);
 }
 
-static void	turk_sort(t_stack_node **a, t_stack_node **b)
+void	sort_stacks(t_stack_node **a, t_stack_node **b)
 {
-	if (len_stack(*a) > 3 && !stack_sorted(*a))
+	int		len_a;
+
+	len_a = len_stack(*a);
+	if (len_a-- > 3 && !stack_sorted(*a))
 		pb(b, a);
-	if (len_stack(*a) > 3 && !stack_sorted(*a))
+	if (len_a-- > 3 && !stack_sorted(*a))
 		pb(b, a);
 	while (len_stack(*a) > 3 && !stack_sorted(*a))
 	{
@@ -43,32 +46,8 @@ static void	turk_sort(t_stack_node **a, t_stack_node **b)
 	sort_three(a);
 	while (*b)
 	{
-		init_node_b(*b, *a);
-		move_b_to_a(a, b);
+		init_node_b(*b);
+		move_b_to_a(b, a);
 	}
-	set_current_pos(*a);
 	min_on_top(a);
-}
-
-int	main(int argc, char **argv)
-{
-	t_stack_node	*a;
-	t_stack_node	*b;
-
-	a = NULL;
-	b = NULL;
-	if (argc == 1)
-		return (0);
-	init_stack_a(&a, argv + 1);
-	if (!stack_sorted(a))
-	{
-		if (len_stack(a) == 2)
-			sa(&a);
-		else if (len_stack(a) == 3)
-			sort_three(&a);
-		else
-			turk_sort(&a, &b);
-	}
-	free_stack(&a);
-	return (0);
 }

@@ -6,14 +6,14 @@
 /*   By: relhadi <relhadi@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 01:23:59 by relhadi           #+#    #+#             */
-/*   Updated: 2025/12/15 01:41:32 by relhadi          ###   ########.fr       */
+/*   Updated: 2026/01/26 03:17:47 by relhadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rra(t_stack_node **a)
+void	rra(t_stack_node **stack)
 {
-	rev_rotate(a);
+	rev_rotate(stack);
 	write (1, "rra\n", 4);
 }
